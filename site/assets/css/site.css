@@ -472,3 +472,4 @@ main:has(> .nf:last-child) { padding-bottom: 0; }
 @media (max-width: 700px) {
   .hero-shade, .page-hero-shade { background: linear-gradient(180deg, rgba(6, 16, 30, .35) 0%, rgba(6, 16, 30, .2) 35%, rgba(6, 16, 30, .82) 100%); }
 }
+.checked { font-size: .85rem; color: var(--ink-2); font-style: italic; border-top: 1px solid var(--line); padding-top: .8rem; margin-top: 1.4rem; }
