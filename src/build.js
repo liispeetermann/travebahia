@@ -81,6 +81,34 @@ ${STAYS.map((s) => `- [${s.title}](${T.abs(`/stays/${s.slug}/`)}): ${s.tldr}`).j
   });
   files['llms-full.txt'] = full;
 
+  /* ---- add US$ next to every R$ price, e.g. "R$70" → "R$70 (~US$12)", "R$150–175" → "R$150–175 (~US$25–30)" ---- */
+  const toNum = (s) => {
+    let t = s.replace(/,/g, '');
+    if (/^\d{1,3}(\.\d{3})+$/.test(t)) t = t.replace(/\./g, ''); // Brazilian thousands "1.500"
+    return parseFloat(t);
+  };
+  const fmtUSD = (r, big) => {
+    const u = r / C.usdRate;
+    if (u < 1 && !big) return u.toFixed(2);
+    if (u < 10 && !big) { const v = Math.round(u * 2) / 2; return Number.isInteger(v) ? String(v) : v.toFixed(1); }
+    if (u < 100) return String(Math.max(1, Math.round(u)));
+    if (u < 1000) return String(Math.round(u / 5) * 5);
+    return (Math.round(u / 10) * 10).toLocaleString('en-US');
+  };
+  const addUSD = (text) => text.replace(/R\$\s?(\d[\d.,]*\d|\d)(?:\s?[–-]\s?(?:R\$\s?)?(\d[\d.,]*\d|\d))?(\+)?(?!\s?\(~US\$)/g, (m, a, b, plus) => {
+    const lo = toNum(a), hi = b ? toNum(b) : null;
+    if (!isFinite(lo)) return m;
+    const big = hi && hi / C.usdRate >= 10;
+    const usd = hi ? `${fmtUSD(lo, big)}–${fmtUSD(hi, big)}` : fmtUSD(lo);
+    return `${m} (~US$${usd}${plus || ''})`;
+  });
+  Object.keys(files).filter((p) => /\.(html|txt)$/.test(p)).forEach((p) => {
+    if (p.endsWith('.html')) {
+      // convert visible text and meta/JSON-LD text, but never inside URLs or attribute names
+      files[p] = files[p].replace(/(>[^<]*<)|(content="[^"]*")|(<script type="application\/ld\+json">[\s\S]*?<\/script>)/g, (m) => addUSD(m));
+    } else files[p] = addUSD(files[p]);
+  });
+
   /* ---- make every page work when opened directly from disk (double-click index.html)
          as well as on the web server: root links become relative and point at index.html ---- */
   Object.keys(files).filter((p) => p.endsWith('.html')).forEach((p) => {

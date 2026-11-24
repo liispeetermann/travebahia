@@ -402,16 +402,20 @@ ${related.length ? `<section class="wrap related"><h2 class="display reveal">Kee
     };
     const body = `<div class="progress" data-progress></div>
 ${pageHero({ item: s, eyebrow: 'Where to stay · ' + d.name, title: s.title, lede: '', crumbs, meta: `<p class="hero-meta"><span>By ${C.author.name}</span> <span>Updated ${fmtDate(s.updated)}</span></p>` })}
-<div id="content" class="wrap narrow">
-  ${s.hotels.length ? `<p class="disclosure">${C.affiliateDisclosure} <a href="/about/#affiliate-disclosure">Learn more</a>.</p>` : '<div style="height:3rem"></div>'}
-  ${tldrBox(s.tldr)}
-  <h2 class="display reveal">Best areas to stay</h2>
-  <div class="areas">${s.areas.map((a) => `<div class="area reveal"><p class="eyebrow">${a.for}</p><h3>${a.name}</h3><p>${a.html}</p></div>`).join('')}</div>
-  ${s.hotels.length ? `<h2 class="display reveal">Our picks</h2>
-  <div class="hotels">${s.hotels.map(hotelCard).join('')}</div>` : ''}
-  ${faqBlock(s.faqs)}
-  <p class="reveal"><a class="btn btn-dark" href="/destinations/${d.slug}/">Read the full ${d.name} guide →</a></p>
-  ${authorBox(s.updated)}
+<div id="content" class="wrap article-layout">
+  <aside class="toc" aria-label="On this page"><p class="eyebrow">On this page</p><ol><li><a href="#best-areas">Best areas at a glance</a></li>${(s.sections || []).map((x) => `<li><a href="#${slugify(x.h)}">${x.h}</a></li>`).join('')}<li><a href="#faq-h">FAQ</a></li></ol></aside>
+  <article class="prose">
+    ${s.hotels.length ? `<p class="disclosure">${C.affiliateDisclosure} <a href="/about/#affiliate-disclosure">Learn more</a>.</p>` : ''}
+    ${tldrBox(s.tldr, s.takeaways)}
+    <section class="reveal"><h2 id="best-areas">Best areas at a glance</h2>
+    <div class="areas">${s.areas.map((a) => `<div class="area"><p class="eyebrow">${a.for}</p><h3>${a.name}</h3><p>${a.html}</p></div>`).join('')}</div></section>
+    ${(s.sections || []).map((x) => `<section class="reveal"><h2 id="${slugify(x.h)}">${x.h}</h2>${x.html}</section>` + sectionMedia(s, x.h)).join('')}
+    ${s.hotels.length ? `<h2 class="reveal">Our picks</h2><div class="hotels">${s.hotels.map(hotelCard).join('')}</div>` : ''}
+    ${gallery(s.gallery, 'In pictures', 'gallery-three')}
+    ${faqBlock(s.faqs)}
+    <p class="reveal"><a class="btn btn-dark" href="/destinations/${d.slug}/">Read the full ${d.name} guide →</a></p>
+    ${authorBox(s.updated)}
+  </article>
 </div>`;
     const realHotels = s.hotels.filter((h) => !h.placeholder);
     return { path, noindex: hasPlaceholders, html: layout({ title: s.title, description: s.description, path, image: ogImg(s.photo), imageAlt: PH.alt(s.photo), type: 'article', article: { ...s, category: 'Where to stay' }, body, noindex: hasPlaceholders,

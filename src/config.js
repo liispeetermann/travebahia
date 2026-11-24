@@ -19,6 +19,9 @@ const CONFIG = {
   //   ga4: Google Analytics 4 measurement ID, e.g. 'G-ABC123XYZ' (free)
   //   plausibleDomain: 'travelbahia.com' if you use Plausible (paid, cookie-free)
   analytics: { ga4: 'G-3GJC96P347', plausibleDomain: '' },
+  // Exchange rate used to show US$ next to every R$ price (update when it moves; source: Banco Central / market rate)
+  usdRate: 5.93,
+  usdRateDate: 'November 2026',
   // FTC-compliant affiliate disclosure (U.S. audience)
   affiliateDisclosure: 'Some links on this page are affiliate links. If you book through them we may earn a commission at no extra cost to you. We only recommend places we would stay ourselves.',
   nav: [

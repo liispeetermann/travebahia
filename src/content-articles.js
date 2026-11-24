@@ -3,9 +3,120 @@
    Prices and rules were researched in November 2026 from operators, official bodies (ICMBio, CDC,
    U.S. State Department, Brazilian government) and traveler reports. They change often — the
    articles say so and point readers to official sources. */
-const CHECKED = '<p class="checked">Prices, schedules and rules checked November 2026. They change often in Bahia, so confirm with the operator or official source before you go.</p>';
+const CHECKED = '<p class="checked">Prices, schedules and rules checked November 2026. They change often in Bahia, so confirm with the operator or official source before you go. US$ amounts are approximate, converted at 5.93 Brazilian reais to the dollar (November 2026).</p>';
+
+/* phrase table helper: rows of [Portuguese, pronunciation, English] */
+const PHRASES = (rows) => '<div class="phrase-table" role="region" aria-label="Phrases" tabindex="0"><table><thead><tr><th>Portuguese</th><th>Say it like</th><th>Meaning</th></tr></thead><tbody>' +
+  rows.map(([pt, say, en]) => `<tr><td lang="pt-BR"><strong>${pt}</strong></td><td class="say">${say}</td><td>${en}</td></tr>`).join('') + '</tbody></table></div>';
 
 const ARTICLES = [
+  /* ------------------------------------------------------------------ */
+  {
+    slug: 'portuguese-phrases-for-brazil',
+    title: 'Essential Portuguese for Brazil: 60+ Words & Phrases to Get Along in Bahia',
+    description: 'The Brazilian Portuguese words and phrases you actually need in Bahia: greetings, please and thank you, directions, ordering food and drinks, prices and bargaining, the beach, emergencies and Bahian slang — with easy pronunciation.',
+    category: 'Planning',
+    date: '2026-11-24', updated: '2026-11-24', readMins: 12,
+    destinations: ['salvador', 'morro-de-sao-paulo'],
+    tldr: 'English is limited outside upscale hotels in Bahia, but a few dozen words go a long way. Learn the greetings (oi, bom dia, tudo bem?), please and thank you (por favor, obrigado/obrigada), how to ask prices (quanto custa?) and where things are (onde fica…?), plus the words for the bill, ice-cold beer and the bathroom. Brazilians are warm and patient — any attempt at Portuguese is met with a smile.',
+    takeaways: ['Men say obrigado, women say obrigada', '“Tudo bem?” is the all-purpose hello — answer “tudo bom!”', '“Quanto custa?” = how much? — ask before you buy', 'In Brazil, “di/de” sounds like “jee” and “ti/te” like “chee”', 'Download Google Translate’s offline Portuguese pack as a backup'],
+    body: [
+      { h: 'Why a little Portuguese matters', html: '<p>Brazilians speak Portuguese, not Spanish — and while some Spanish words help, the pronunciation is very different. Outside upscale hotels and tour companies, English is limited in Bahia, especially with taxi drivers, beach vendors, market stalls and small restaurants. A handful of words changes everything: people relax, prices get friendlier, and conversations start. Below are the words we used every single day, grouped by situation.</p>' },
+      { h: 'Pronunciation in two minutes', html: '<ul><li><strong>De / di</strong> sounds like <em>“jee”</em>: <em>bom dia</em> = “bohn JEE-ah.”</li><li><strong>Te / ti</strong> sounds like <em>“chee”</em>: <em>noite</em> = “NOY-chee.”</li><li><strong>R at the start of a word or rr</strong> sounds like an English <em>“h”</em>: <em>Rio</em> = “HEE-oo.”</li><li><strong>Final -o</strong> sounds like <em>“oo”</em> and <strong>final -e</strong> like <em>“ee.”</em></li><li><strong>-ão</strong> is a nasal <em>“owng”</em>: <em>não</em> = “nowng.”</li><li><strong>Nh</strong> = “ny” (like canyon), <strong>lh</strong> = “ly” (like million).</li></ul><p>In the guides below, capital letters show the stressed syllable.</p>' },
+      { h: 'Greetings and small talk', html: PHRASES([
+        ['Oi / Olá', 'oy / oh-LAH', 'Hi / Hello'],
+        ['Bom dia', 'bohn JEE-ah', 'Good morning'],
+        ['Boa tarde', 'BOH-ah TAR-jee', 'Good afternoon'],
+        ['Boa noite', 'BOH-ah NOY-chee', 'Good evening / good night'],
+        ['Tudo bem?', 'TOO-doo bayn', 'How are you? (literally “all good?”)'],
+        ['Tudo bom!', 'TOO-doo bohn', 'All good! (the usual reply)'],
+        ['Meu nome é…', 'meh-oo NOH-mee eh', 'My name is…'],
+        ['Prazer', 'prah-ZEHR', 'Nice to meet you'],
+        ['Tchau', 'chow', 'Bye'],
+        ['Até logo', 'ah-TEH LOH-goo', 'See you later'],
+      ]) },
+      { h: 'Politeness essentials', html: PHRASES([
+        ['Por favor', 'por fah-VOR', 'Please'],
+        ['Obrigado (man) / Obrigada (woman)', 'oh-bree-GAH-doo / oh-bree-GAH-dah', 'Thank you'],
+        ['De nada', 'jee NAH-dah', 'You’re welcome'],
+        ['Com licença', 'kohn lee-SEN-sah', 'Excuse me (to pass, or to get attention)'],
+        ['Desculpa', 'jees-KOOL-pah', 'Sorry'],
+        ['Sim / Não', 'seeng / nowng', 'Yes / No'],
+        ['Não, obrigado/a', 'nowng, oh-bree-GAH-doo/dah', 'No, thank you — your most useful phrase with vendors'],
+      ]) + '<p>The word you choose for “thank you” depends on <em>your</em> gender, not the person you’re thanking.</p>' },
+      { h: 'When you don’t understand', html: PHRASES([
+        ['Você fala inglês?', 'voh-SEH FAH-lah een-GLAYS', 'Do you speak English?'],
+        ['Eu não falo português', 'eh-oo nowng FAH-loo por-too-GAYS', 'I don’t speak Portuguese'],
+        ['Não entendo', 'nowng en-TEN-doo', 'I don’t understand'],
+        ['Mais devagar, por favor', 'mice jee-vah-GAR', 'Slower, please'],
+        ['Pode repetir?', 'POH-jee heh-peh-CHEER', 'Can you repeat?'],
+      ]) },
+      { h: 'Getting around', html: PHRASES([
+        ['Onde fica…?', 'OHN-jee FEE-kah', 'Where is…?'],
+        ['O banheiro', 'oo bahn-YAY-roo', 'The bathroom'],
+        ['A praia', 'ah PRY-ah', 'The beach'],
+        ['A rodoviária', 'ah hoh-doh-vee-AH-ree-ah', 'The bus station'],
+        ['O aeroporto', 'oo ah-eh-roh-POR-too', 'The airport'],
+        ['À esquerda / à direita', 'ah es-KER-dah / ah jee-RAY-tah', 'Left / right'],
+        ['Em frente', 'ayn FREN-chee', 'Straight ahead'],
+        ['É perto? / É longe?', 'eh PER-too / eh LOHN-zhee', 'Is it near? / Is it far?'],
+        ['Aqui', 'ah-KEE', 'Here'],
+      ]) },
+      { h: 'Money, prices and bargaining', html: PHRASES([
+        ['Quanto custa?', 'KWAN-too KOOS-tah', 'How much is it?'],
+        ['Muito caro', 'MOO-ee-too KAH-roo', 'Too expensive'],
+        ['Tem desconto?', 'tayn jees-KOHN-too', 'Is there a discount?'],
+        ['Pode fazer por…?', 'POH-jee fah-ZEHR por', 'Can you do it for…? (name your price)'],
+        ['Aceita cartão?', 'ah-SAY-tah kar-TOWNG', 'Do you take cards?'],
+        ['Dinheiro', 'jee-NYAY-roo', 'Cash / money'],
+        ['A conta, por favor', 'ah KOHN-tah', 'The bill, please'],
+      ]) + '<p>Bargaining is normal at markets and with beach vendors — see our <a href="/blog/markets-bargaining-prices-brazil/">markets and prices guide</a>.</p>' },
+      { h: 'Food and drinks', html: PHRASES([
+        ['O cardápio', 'oo kar-DAH-pee-oo', 'The menu'],
+        ['Água sem gás / com gás', 'AH-gwah sayn gas / kohn gas', 'Still / sparkling water'],
+        ['Uma cerveja bem gelada', 'OO-mah ser-VAY-zhah bayn zheh-LAH-dah', 'A really cold beer'],
+        ['Sem gelo', 'sayn ZHEH-loo', 'Without ice'],
+        ['Suco de…', 'SOO-koo jee', 'Juice of… (maracujá = passion fruit)'],
+        ['Água de coco', 'AH-gwah jee KOH-koo', 'Coconut water'],
+        ['Quente ou frio?', 'KEN-chee oo FREE-oo', 'Hot or cold? — the acarajé seller is asking about pepper'],
+        ['Sem pimenta', 'sayn pee-MEN-tah', 'No hot pepper'],
+        ['Sou vegetariano/a', 'soh veh-zheh-tah-ree-AH-noo/nah', 'I’m vegetarian'],
+        ['Delicioso!', 'deh-lee-see-OH-zoo', 'Delicious!'],
+        ['Saúde!', 'sah-OO-jee', 'Cheers!'],
+      ]) + '<p>More in our <a href="/blog/what-to-eat-in-bahia/">Bahian food and drink guide</a>.</p>' },
+      { h: 'At the beach', html: PHRASES([
+        ['Guarda-sol', 'GWAR-dah sol', 'Beach umbrella'],
+        ['Cadeira', 'kah-DAY-rah', 'Chair'],
+        ['Tem consumação mínima?', 'tayn kohn-soo-mah-SOWNG MEE-nee-mah', 'Is there a minimum spend?'],
+        ['Maré baixa / maré alta', 'mah-REH BY-shah / mah-REH AL-tah', 'Low tide / high tide'],
+        ['Piscina natural', 'pee-SEE-nah nah-too-RAL', 'Natural pool'],
+        ['Protetor solar', 'proh-teh-TOR soh-LAR', 'Sunscreen'],
+      ]) + '<p>See our <a href="/blog/beach-day-in-bahia-like-a-local/">local beach-day guide</a>.</p>' },
+      { h: 'Emergencies and health', html: PHRASES([
+        ['Socorro!', 'soh-KOH-hoo', 'Help!'],
+        ['Chame a polícia', 'SHAH-mee ah poh-LEE-see-ah', 'Call the police (dial 190)'],
+        ['Preciso de um médico', 'preh-SEE-zoo jee oong MEH-jee-koo', 'I need a doctor (ambulance: 192)'],
+        ['Hospital / Farmácia', 'ohs-pee-TOW / far-MAH-see-ah', 'Hospital / Pharmacy'],
+        ['Fui roubado / roubada', 'fwee hoh-BAH-doo / dah', 'I was robbed'],
+        ['Estou perdido / perdida', 'es-TOH per-JEE-doo / dah', 'I’m lost'],
+      ]) + '<p>More in our <a href="/blog/is-bahia-safe-for-american-tourists/">Bahia safety guide</a>.</p>' },
+      { h: 'Bahian slang you’ll hear', html: PHRASES([
+        ['Oxe! / Oxente!', 'OH-shee / oh-SHEN-chee', 'Wow! / What?! — Bahia’s favorite exclamation'],
+        ['Painho / Mainha', 'pa-EEN-yoo / my-EEN-yah', 'Dad / Mom — also used affectionately for anyone'],
+        ['Massa!', 'MAH-sah', 'Cool! Great!'],
+        ['É barril', 'eh bah-HEEL', 'Salvador slang for something intense — wild, crazy or tough'],
+        ['Véi', 'vay', 'Dude, buddy'],
+        ['Beleza?', 'beh-LEH-zah', 'All good? / OK? (also a reply: “beleza!”)'],
+      ]) + '<p>Bahians speak with a warm, slow, sing-song rhythm — and they love it when visitors try a little slang.</p>' },
+      { h: 'Our tips for getting by', html: '<ul><li>Download <strong>Google Translate’s offline Portuguese</strong> pack and use the camera mode for menus.</li><li>Learn the numbers 1–10 (um, dois, três, quatro, cinco, seis, sete, oito, nove, dez) for prices.</li><li>Smile, slow down and use gestures — Brazilians are patient and expressive.</li><li>A thumbs-up is the all-purpose “thanks / OK / all good” in Brazil.</li><li>Don’t worry about mistakes: any attempt is appreciated.</li></ul>' },
+    ],
+    faqs: [
+      { q: 'Do people speak English in Bahia?', a: 'English is limited outside upscale hotels and tour companies. Learning basic Portuguese greetings, numbers and phrases like “quanto custa?” (how much?) and “onde fica…?” (where is…?) makes travel much easier.' },
+      { q: 'How do you say thank you in Brazilian Portuguese?', a: 'Men say “obrigado” and women say “obrigada” (oh-bree-GAH-doo / dah). The form depends on the speaker’s gender, not the listener’s.' },
+      { q: 'Is Brazilian Portuguese similar to Spanish?', a: 'Some words are similar, but pronunciation is very different, so Spanish speakers can often read Portuguese but struggle to understand it spoken. Brazilians appreciate it when visitors try Portuguese rather than Spanish.' },
+      { q: 'What does “oxente” mean?', a: '“Oxente” (or “oxe”) is a typical Bahian and Northeastern exclamation of surprise, like “wow!” or “what?!”.' },
+    ],
+  },
   /* ------------------------------------------------------------------ */
   {
     slug: 'beach-day-in-bahia-like-a-local',

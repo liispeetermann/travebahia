@@ -473,3 +473,23 @@ main:has(> .nf:last-child) { padding-bottom: 0; }
   .hero-shade, .page-hero-shade { background: linear-gradient(180deg, rgba(6, 16, 30, .35) 0%, rgba(6, 16, 30, .2) 35%, rgba(6, 16, 30, .82) 100%); }
 }
 .checked { font-size: .85rem; color: var(--ink-2); font-style: italic; border-top: 1px solid var(--line); padding-top: .8rem; margin-top: 1.4rem; }
+
+/* ---------- phrase tables (Portuguese guide) ---------- */
+.phrase-table { overflow-x: auto; margin: 1.2rem 0 1.6rem; border-radius: var(--radius-sm); border: 1px solid var(--line); background: #fff; }
+.phrase-table table { width: 100%; border-collapse: collapse; font-size: .98rem; }
+.phrase-table th { text-align: left; font: 600 .72rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--sun); padding: .9rem 1rem; background: var(--sand-2); }
+.phrase-table td { padding: .75rem 1rem; border-top: 1px solid var(--line); vertical-align: top; }
+.phrase-table tr:hover td { background: #fffaf2; }
+.phrase-table td:first-child strong { font-family: var(--serif); font-size: 1.08rem; color: var(--ocean); }
+.phrase-table .say { color: var(--ink-2); font-style: italic; white-space: nowrap; }
+@media (max-width: 640px) { .phrase-table .say { white-space: normal; } .phrase-table td, .phrase-table th { padding: .6rem .7rem; } }
+.phrase-table table { table-layout: fixed; } .phrase-table th:nth-child(1) { width: 32%; } .phrase-table th:nth-child(2) { width: 34%; } .phrase-table .say { white-space: normal; }
+.price-table th:nth-child(1) { width: 44%; } .price-table th:nth-child(2), .price-table th:nth-child(3) { width: 28%; }
+.price-table td { font-size: .95rem; }
+.price-table .area-note { display: block; font-size: .82rem; color: var(--ink-2); font-weight: 400; margin-top: .25rem; }
+.area-price { display: block; margin-top: .7rem; padding-top: .7rem; border-top: 1px dashed var(--line); font-size: .85rem; font-weight: 600; color: var(--ocean-2); }
+
+/* index pages: breathing room between the cover and the first cards */
+section#content.card-grid, section#content.dest-grid { padding-top: clamp(3rem, 6vw, 5rem); }
+.prose .areas { grid-template-columns: repeat(2, 1fr); margin-bottom: 1rem; }
+@media (max-width: 640px) { .prose .areas { grid-template-columns: 1fr; } }

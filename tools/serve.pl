@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # Tiny local preview server (perl is built into macOS): perl tools/serve.pl [port]
 use strict; use warnings; use IO::Socket::INET;
-my $port = shift || 8080; my $root = 'site';
+my $port = shift || 8080; my $root = shift || '.';
 my %types = (html=>'text/html; charset=utf-8', css=>'text/css', js=>'application/javascript', svg=>'image/svg+xml', xml=>'application/xml', txt=>'text/plain; charset=utf-8', webmanifest=>'application/manifest+json', jpg=>'image/jpeg', jpeg=>'image/jpeg', png=>'image/png', webp=>'image/webp', avif=>'image/avif');
 my $srv = IO::Socket::INET->new(LocalPort=>$port, Listen=>20, ReuseAddr=>1, Proto=>'tcp') or die "port $port: $!";
 print "Serving $root at http://localhost:$port\n";

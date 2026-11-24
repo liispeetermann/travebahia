@@ -165,6 +165,50 @@ const PHOTOS = {
   LG_ceramics: ['/photos/crafts-ceramics.jpg', 'Liis Peetermann', 'Handmade ceramics and crafts'],
   LG_textiles: ['/photos/textiles-shop.jpg', 'Liis Peetermann', 'Stacks of colorful textiles in a shop'],
 
+  // ---- Even more of our photos ----
+  LG_barwindow: ['/photos/bar-through-window.jpg', 'Liis Peetermann', 'A neighborhood bar seen through an old window grille'],
+  LG_paodequeijo: ['/photos/pao-de-queijo.jpg', 'Liis Peetermann', 'Warm pão de queijo, Brazil’s cheese bread'],
+  LG_yellowwall: ['/photos/yellow-flowers-wall.jpg', 'Liis Peetermann', 'Yellow flowers spilling over a street wall'],
+  LG_yellowgarden: ['/photos/yellow-flowers-garden.jpg', 'Liis Peetermann', 'Bright yellow blossoms in a tropical garden'],
+  LG_bougainvillea: ['/photos/bougainvillea-street.jpg', 'Liis Peetermann', 'Pink bougainvillea in bloom on a quiet street'],
+  LG_salad: ['/photos/restaurant-salad.jpg', 'Liis Peetermann', 'A fresh restaurant salad with shrimp'],
+  LG_acai: ['/photos/acai-cup.jpg', 'Liis Peetermann', 'A cup of açaí with toppings'],
+  LG_palmsup: ['/photos/palms-from-below.jpg', 'Liis Peetermann', 'Looking up at tall palms in the rainforest'],
+  LG_cafepastry: ['/photos/cafe-pastries-coffee.jpg', 'Liis Peetermann', 'Pastries and a coffee at a café counter'],
+  LG_fruitplate: ['/photos/fruit-plate-dragonfruit.jpg', 'Liis Peetermann', 'A plate of tropical fruit with dragon fruit and papaya'],
+  LG_busleito: ['/photos/bus-leito-interior.jpg', 'Liis Peetermann', 'Inside a long-distance bus with wide leito seats'],
+  LG_forest: ['/photos/rainforest-trail.jpg', 'Liis Peetermann', 'Sunlight on a rainforest trail'],
+  LG_busstation: ['/photos/bus-station-coach.jpg', 'Liis Peetermann', 'A long-distance coach waiting at a bus station'],
+  LG_handtree: ['/photos/hand-on-forest-tree.jpg', 'Liis Peetermann', 'A hand on a giant mossy tree in the Atlantic forest'],
+  LG_sausages: ['/photos/market-sausages-cheese.jpg', 'Liis Peetermann', 'Sausages, cheeses and sweets at a market shop'],
+  LG_pratofeito: ['/photos/prato-feito.jpg', 'Liis Peetermann', 'A Brazilian prato feito: rice, beans, meat and a fried pastel'],
+  LG_departures: ['/photos/bus-station-departures.jpg', 'Liis Peetermann', 'The departure bays of a big Brazilian bus station'],
+  LG_foodcourt: ['/photos/bus-station-food-court.jpg', 'Liis Peetermann', 'A bus-station food court at a rest stop'],
+  LG_busseat: ['/photos/bus-seat-legroom.jpg', 'Liis Peetermann', 'Plenty of legroom in a reclining long-distance bus seat'],
+  LG_tapioca: ['/photos/tapioca-and-coffee.jpg', 'Liis Peetermann', 'A filled tapioca crepe with a small black coffee'],
+  LG_juicecup: ['/photos/fresh-juice-cup.jpg', 'Liis Peetermann', 'Fresh tropical juice in a takeaway cup'],
+  LG_pastel: ['/photos/pastel-in-hand.jpg', 'Liis Peetermann', 'A crispy pastel, Brazil’s favorite fried street snack'],
+  LG_coffee: ['/photos/coffee-outdoors.jpg', 'Liis Peetermann', 'A strong Brazilian cafezinho on an outdoor table'],
+  LG_lunchplate: ['/photos/lunch-plate-garden.jpg', 'Liis Peetermann', 'A home-style lunch plate at a garden restaurant'],
+  LG_lunchtable: ['/photos/lunch-table-garden.jpg', 'Liis Peetermann', 'Lunch on a shaded restaurant terrace'],
+  LG_farmland: ['/photos/green-farmland.jpg', 'Liis Peetermann', 'Green countryside under a big Brazilian sky'],
+  LG_glebcafe: ['/photos/gleb-cafe.jpg', 'Liis Peetermann', 'Gleb over coffee at a local café'],
+  LG_sunglasses: ['/photos/liis-gleb-sunglasses.jpg', 'Liis Peetermann', 'Liis and Gleb on a sunny day out'],
+  LG_neonbeer: ['/photos/gleb-neon-beer.jpg', 'Liis Peetermann', 'Gleb under a “To beer or not to beer” neon sign'],
+  LG_liisbar: ['/photos/liis-bar-stool.jpg', 'Liis Peetermann', 'Liis at a lively bar'],
+  LG_glebfair: ['/photos/gleb-street-fair.jpg', 'Liis Peetermann', 'Gleb at a busy street fair lined with stalls and palms'],
+  LG_nightselfie: ['/photos/liis-gleb-night.jpg', 'Liis Peetermann', 'Liis and Gleb on a night out'],
+  LG_coldbeers: ['/photos/cold-beers-glasses.jpg', 'Liis Peetermann', 'Two ice-cold beers on a sidewalk bar table'],
+  LG_cooler: ['/photos/drinks-cooler.jpg', 'Liis Peetermann', 'A drinks cooler stocked with cold beer and soft drinks'],
+  LG_menuboard: ['/photos/menu-board-prices.jpg', 'Liis Peetermann', 'A snack bar menu board with prices in reais'],
+  LG_nightbeach: ['/photos/night-beach.jpg', 'Liis Peetermann', 'A city beach after dark'],
+  LG_pizza: ['/photos/pizza-night.jpg', 'Liis Peetermann', 'Pizza night — Brazilians love their pizza'],
+  LG_nightrocks: ['/photos/night-rocks-lights.jpg', 'Liis Peetermann', 'Rocks and village lights on the shore at night'],
+  LG_selfie2: ['/photos/liis-gleb-selfie-2.jpg', 'Liis Peetermann', 'Liis and Gleb out exploring'],
+  LG_shrimp2: ['/photos/shrimp-pineapple-2.jpg', 'Liis Peetermann', 'Shrimp served in pineapples, ready to share'],
+  // Pexels (pexels.com/license — free to use)
+  PX_cheese: ['pexels:8751408', 'Anastasia Belousova', 'Golden grilled cheese — just like the queijo coalho sold on Bahia’s beaches'],
+
 };
 
 /* ---------- which photo goes where ---------- */
@@ -183,29 +227,67 @@ const PHOTO_ASSIGN = {
     'abrolhos': { photo: 'W1', card: 'W2', gallery: ['W2', 'W3', 'U10'] },
   },
   articles: {
+    'portuguese-phrases-for-brazil': { photo: 'R3', inline: [] },
     'beach-day-in-bahia-like-a-local': { photo: 'LG_bluebeach', inline: [], gallery: ['LG_chairs', 'LG_tables', 'LG_woodboats', 'LG_boats2', 'LG_beachtree', 'LG_beachboat', 'LG_kiosk', 'LG_rocks', 'LG_green'] },
     'brazil-by-bus-leito': { photo: 'LG_lane', inline: ['LG_street', 'LG_coast'] },
-    'markets-bargaining-prices-brazil': { photo: 'LG_hammocks', inline: [], gallery: ['LG_fair', 'LG_cheese', 'LG_cushions', 'LG_hangbags', 'LG_bagshelves', 'LG_pillows', 'LG_ceramics', 'LG_textiles', 'LG_boutique'] },
-    'is-bahia-safe-for-american-tourists': { photo: 'S1', inline: [], gallery: ['LG_street', 'LG_tree', 'LG_oldstreet', 'LG_square', 'LG_shopstreet', 'LG_liistree'] },
+    'markets-bargaining-prices-brazil': { photo: 'LG_hammocks', inline: [], gallery: ['LG_fair', 'LG_cheese', 'LG_cushions', 'LG_hangbags', 'LG_bagshelves', 'LG_pillows', 'LG_ceramics', 'LG_textiles', 'LG_boutique', 'LG_sausages', 'LG_stall', 'LG_bougainvillea'] },
+    'is-bahia-safe-for-american-tourists': { photo: 'S1', inline: [], gallery: ['LG_street', 'LG_tree', 'LG_oldstreet', 'LG_square', 'LG_shopstreet', 'LG_liistree', 'LG_yellowwall', 'LG_yellowgarden', 'LG_nightrocks'] },
     'salvador-to-morro-de-sao-paulo': { photo: 'F4', inline: ['M4', 'LG_lane'] },
     'brazil-visa-for-us-citizens': { photo: 'S10', inline: ['S8'] },
     'best-time-to-visit-bahia': { photo: 'LG_waves', inline: ['W2', 'LG_tideout'] },
     'natural-pools-bahia': { photo: 'U1', inline: [], gallery: ['U6', 'U2', 'U9', 'U10', 'B3', 'M3'] },
     'chapada-diamantina-hiking-guide': { photo: 'C5', inline: ['C2', 'C7', 'C6'] },
-    'what-to-eat-in-bahia': { photo: 'LG_shrimp', inline: [], gallery: ['E1', 'E4', 'E8', 'E7', 'LG_stew', 'LG_meal', 'LG_burger', 'LG_snack', 'LG_foodtruck', 'LG_juice', 'LG_breakfast', 'LG_beers', 'LG_bar', 'LG_cheers', 'LG_caips'] },
+    'what-to-eat-in-bahia': { photo: 'LG_shrimp', inline: [], gallery: ['E1', 'E4', 'E8', 'E7', 'LG_stew', 'LG_meal', 'LG_burger', 'LG_snack', 'LG_foodtruck', 'LG_juice', 'LG_breakfast', 'LG_beers', 'LG_bar', 'LG_cheers', 'LG_caips', 'LG_paodequeijo', 'LG_salad', 'LG_cafepastry', 'LG_tapioca', 'LG_juicecup', 'LG_coffee', 'LG_lunchplate', 'LG_lunchtable', 'LG_fruitplate', 'LG_pizza', 'LG_shrimp2', 'LG_neonbeer', 'LG_cooler', 'LG_barwindow', 'LG_liisbar', 'E6', 'LG_doce', 'LG_crates'] },
     'bahia-10-day-itinerary': { photo: 'M8', inline: ['LG_facade', 'M7', 'C6'] },
   },
   stays: {
-    'where-to-stay-morro-de-sao-paulo': { photo: 'M1', hotelPhotos: ['LG_jungle', 'LG_breakfast', 'LG_leaves'] },
-    'best-boutique-hotels-salvador': { photo: 'LG_boats', hotelPhotos: ['LG_facade'] },
+    'where-to-stay-morro-de-sao-paulo': { photo: 'M1', hotelPhotos: [], gallery: ['LG_nightrocks', 'LG_townlights', 'LG_caipview', 'LG_shrimp2', 'LG_lowtide2', 'LG_fishboat'] },
+    'best-boutique-hotels-salvador': { photo: 'LG_boats', hotelPhotos: [], gallery: ['LG_facade', 'LG_streetart', 'LG_oldstreet', 'LG_fisher', 'LG_nightbeach', 'LG_tree'] },
   },
-  about: { hero: 'M7', couple: 'LG_couple', portrait: 'LG_selfie', gallery: ['LG_cacao2', 'LG_cacao1', 'LG_caipview', 'LG_shrimp', 'LG_fishboat', 'LG_fruitstall', 'LG_lunch', 'LG_leaves', 'LG_glebbar', 'LG_hibiscus', 'LG_fruittree', 'LG_liistree'] },
+  about: { hero: 'M7', couple: 'LG_couple', portrait: 'LG_selfie', gallery: ['LG_cacao2', 'LG_cacao1', 'LG_caipview', 'LG_shrimp', 'LG_fishboat', 'LG_fruitstall', 'LG_lunch', 'LG_leaves', 'LG_glebbar', 'LG_hibiscus', 'LG_fruittree', 'LG_liistree', 'LG_selfie2', 'LG_nightselfie', 'LG_forest', 'LG_handtree', 'LG_palmsup', 'LG_farmland', 'LG_yellowgarden', 'LG_bougainvillea'] },
 };
 
 /* ---------- photos placed right after a specific section (by its heading) ----------
    One key = full-width photo, two keys = side-by-side pair. */
 const SECTION_PHOTOS = {
+  // stay guides
+  'where-to-stay-morro-de-sao-paulo': {
+    'How Morro is laid out': ['M4'],
+    'Village center: value and convenience': ['LG_street'],
+    'Primeira and Segunda Praia: in the middle of it all': ['M8'],
+    'Terceira Praia: the best all-rounder': ['M5'],
+    'Quarta Praia: quiet, space and luxury': ['LG_tideout'],
+    'Gamboa: the quiet side': ['LG_dusk'],
+    'What you get at each price level': ['LG_jungle'],
+    'Seasons and prices': ['LG_breakfast'],
+    'Arriving with luggage': ['LG_lane'],
+    'Money and daily costs': ['LG_menuboard'],
+  },
+  'best-boutique-hotels-salvador': {
+    'How Salvador is laid out': ['S1'],
+    'Barra: the best base for a first trip': ['S3'],
+    'Ondina: quieter seafront': ['LG_waves'],
+    'Rio Vermelho: food, music and local life': ['DR1'],
+    'Santo Antônio Além do Carmo: romance and views': ['R2'],
+    'The Pelourinho: full immersion': ['S4'],
+    'Pituba and modern districts': ['S7'],
+    'What you get at each price level': ['S9'],
+    'Where to stay for Carnival': ['DR2'],
+    'Safety tips by neighborhood': ['R1'],
+  },
   // articles
+  'portuguese-phrases-for-brazil': {
+    'Why a little Portuguese matters': ['LG_glebbar'],
+    'Greetings and small talk': ['LG_nightselfie'],
+    'Politeness essentials': ['LG_glebcafe'],
+    'When you don’t understand': ['LG_liisbar'],
+    'Our tips for getting by': ['LG_sunglasses'],
+    'Getting around': ['R1'],
+    'Money, prices and bargaining': ['LG_hangbags'],
+    'Food and drinks': ['LG_neonbeer'],
+    'At the beach': ['LG_chairs'],
+    'Bahian slang you’ll hear': ['DR1'],
+  },
   'beach-day-in-bahia-like-a-local': {
     'How Bahians do the beach': ['LG_waves'],
     'Umbrellas, chairs and barracas: what to pay': ['LG_umbrella'],
@@ -217,22 +299,26 @@ const SECTION_PHOTOS = {
   },
   'brazil-by-bus-leito': {
     'Why take the bus in Brazil': ['LG_coast'],
+    'Seat classes explained': ['LG_busleito'],
     'Key routes from Salvador': ['C6'],
-    'Stops along the way': ['LG_street'],
-    'Safety on the road': ['LG_lane'],
+    'How to book': ['LG_cafepastry'],
+    'Salvador’s bus station': ['LG_departures'],
+    'Stops along the way': ['LG_foodcourt'],
+    'What to bring': ['LG_busseat'],
+    'Safety on the road': ['LG_busstation'],
   },
   'markets-bargaining-prices-brazil': {
-    'Street fairs and markets': ['LG_fair'],
+    'Street fairs and markets': ['LG_glebfair'],
     'How bargaining works': ['LG_bags'],
     'What to buy': ['LG_pillows'],
-    'What things cost': ['LG_stall'],
+    'What things cost': ['LG_menuboard'],
     'A note on how streets look': ['LG_facade'],
   },
   'is-bahia-safe-for-american-tourists': {
     'Salvador: neighborhood by neighborhood': ['R3'],
     'The Pelourinho, day and night': ['S4'],
     'Getting around': ['R1'],
-    'Beach and ocean safety': ['LG_umbrella'],
+    'Beach and ocean safety': ['LG_nightbeach'],
     'Carnival safety': ['DR1'],
     'Worn streets are not the same as unsafe': ['LG_street'],
   },
@@ -269,12 +355,14 @@ const SECTION_PHOTOS = {
   },
   'what-to-eat-in-bahia': {
     'Why we cooked so much': ['E3'],
-    'Fried cheese on the beach': ['E6'],
+    'Fried cheese on the beach': ['PX_cheese'],
     'Acarajé and moqueca': ['X1'],
     'More Bahian dishes to order': ['E9'],
-    'Beer is everywhere — and for good reason': ['LG_crates'],
+    'Beer is everywhere — and for good reason': ['LG_coldbeers'],
     'Caipirinha, Pitu and Catuaba: our verdict': ['E2'],
-    'Non-alcoholic favorites': ['LG_juice'],
+    'How to eat out like a local': ['LG_pratofeito'],
+    'Non-alcoholic favorites': ['LG_acai'],
+    'Food safety tips': ['LG_pastel'],
   },
   'bahia-10-day-itinerary': {
     'Day 1: Arrive in Salvador': ['S1'],
@@ -313,23 +401,27 @@ const SECTION_PHOTOS = {
 
 const PH = (() => {
   const isLocal = (src) => src.startsWith('/');
+  const isPexels = (src) => src.startsWith('pexels:');
   const url = (key, w = 1600, h) => {
     const p = PHOTOS[key];
     if (!p) throw new Error('Unknown photo key ' + key);
     if (isLocal(p[0])) return p[0];
+    if (isPexels(p[0])) { const id = p[0].slice(7); return `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}${h ? `&h=${h}&fit=crop` : ''}`; }
     return `https://images.unsplash.com/photo-${p[0]}?auto=format&fit=crop&w=${w}${h ? `&h=${h}` : ''}&q=78`;
   };
   const srcset = (key) => isLocal(PHOTOS[key][0]) ? `${PHOTOS[key][0].replace('/photos/', '/photos/sm/')} 1000w, ${PHOTOS[key][0]} 1800w` : [640, 1080, 1600, 2400].map((w) => `${url(key, w)} ${w}w`).join(', ');
   const alt = (key) => PHOTOS[key][2];
   const credit = (key) => {
     const [id, handle] = PHOTOS[key];
-    return isLocal(id) ? `Photo: ${handle}` : `Photo: <a href="https://unsplash.com/@${handle}?utm_source=travelbahia&amp;utm_medium=referral" rel="noopener" target="_blank">@${handle}</a> / <a href="https://unsplash.com/?utm_source=travelbahia&amp;utm_medium=referral" rel="noopener" target="_blank">Unsplash</a>`;
+    if (isLocal(id)) return `Photo: ${handle}`;
+    if (isPexels(id)) return `Photo: ${handle} / <a href="https://www.pexels.com/photo/${id.slice(7)}/" rel="noopener" target="_blank">Pexels</a>`;
+    return `Photo: <a href="https://unsplash.com/@${handle}?utm_source=travelbahia&amp;utm_medium=referral" rel="noopener" target="_blank">@${handle}</a> / <a href="https://unsplash.com/?utm_source=travelbahia&amp;utm_medium=referral" rel="noopener" target="_blank">Unsplash</a>`;
   };
   // attach assignments to content objects
   const H = PHOTO_ASSIGN;
   DESTINATIONS.forEach((d) => Object.assign(d, H.destinations[d.slug]));
-  DESTINATIONS.concat(ARTICLES).forEach((x) => { x.sectionPhotos = SECTION_PHOTOS[x.slug] || {}; });
   ARTICLES.forEach((a) => Object.assign(a, H.articles[a.slug]));
   STAYS.forEach((s) => Object.assign(s, H.stays[s.slug]));
+  DESTINATIONS.concat(ARTICLES, STAYS).forEach((x) => { x.sectionPhotos = SECTION_PHOTOS[x.slug] || {}; });
   return { url, srcset, alt, credit };
 })();

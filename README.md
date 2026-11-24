@@ -5,12 +5,16 @@ A fast, image-led static travel site about Bahia, Brazil, written for U.S. trave
 ## Build & preview (macOS, nothing to install)
 
 ```bash
-./build.sh    # regenerates ./site after you edit anything in src/
+./build.sh    # regenerates the website in this folder after you edit anything in src/
 ```
 
-To view the site, double-click `site/index.html`. Pages link to each other with relative paths, so the site works straight from the folder and on any web host.
+The built website lives at the **top level of this folder** (`index.html`, `blog/`, `destinations/`, `photos/`, `CNAME`…), right next to the source folders — ready for GitHub Pages ("Deploy from a branch", folder `/ (root)`). To view it locally, double-click `index.html`; pages link to each other with relative paths.
 
-If you have Node.js, `node build-node.js` does the same build. The finished site is plain HTML in `site/`. It can be deployed to Netlify, Cloudflare Pages, Vercel or GitHub Pages; point the build output at `site/`.
+- Source folders (never touched by the build): `src/`, `public/`, `tools/`, `originals/`, `build.sh`, `build-node.js`, `README.md`.
+- Everything else at the top level is generated. The build only replaces files listed in the hidden `.generated` file, so your source and git files are safe.
+- `CNAME` tells GitHub Pages to serve the site at travelbahia.com.
+- If you have Node.js, `node build-node.js` does the same build.
+- Local preview server: `perl tools/serve.pl 8081` then open http://localhost:8081.
 
 ## Where things live
 
@@ -56,3 +60,9 @@ Still for you to do:
 - [ ] Analytics: paste a Google Analytics 4 ID (`G-…`) into `analytics.ga4` in `src/config.js` (or a domain into `plausibleDomain` for Plausible), then run `./build.sh`. The privacy page updates itself to match.
 - [ ] Create a `hello@travelbahia.com` mailbox.
 - [ ] Re-check visa, health and safety facts before launch and whenever rules change.
+
+## Prices in R$ and US$
+
+Write prices in reais only (e.g. `R$150–175`). At build time every R$ amount on the site automatically gets its dollar equivalent, e.g. `R$150–175 (~US$25–30)`. When the exchange rate moves, update `usdRate` (and `usdRateDate`) in `src/config.js` and run `./build.sh`.
+
+Accommodation price ranges per area live in `STAY_PRICES` at the bottom of `src/content-destinations.js`.

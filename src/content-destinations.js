@@ -246,3 +246,85 @@ const DESTINATIONS = [
     ],
   },
 ];
+
+/* ------------------------------------------------------------------
+   Accommodation price guide — nightly rate for a double room, usually with breakfast.
+   Researched November 2026 from public listings (Booking.com, Kayak, TripAdvisor listing data,
+   hotel guides) and Brazilian travel guides. Mid-range = well-rated pousadas/3–4★ hotels;
+   high-end = boutique and luxury stays. Peak weeks run much higher.
+   US$ equivalents are added automatically at build time.
+   ------------------------------------------------------------------ */
+const STAY_PRICES = {
+  'salvador': {
+    rows: [
+      ['Barra & Ondina', 'R$350–600', 'R$700–1,500', 'Seafront hotels; easiest base'],
+      ['Rio Vermelho', 'R$350–650', 'R$800–1,800', 'Design hotels near the nightlife'],
+      ['Pelourinho & Santo Antônio', 'R$400–800', 'R$1,400–3,500', 'Boutique hotels in colonial mansions; Salvador’s most luxurious addresses are here'],
+    ],
+    note: 'Citywide, 4-star hotels average around R$700 and 5-star around R$2,100 a night. February (Carnival) is the most expensive month; April–June the cheapest.',
+  },
+  'morro-de-sao-paulo': {
+    rows: [
+      ['Village & Segunda Praia', 'R$250–500', 'R$800–1,200', 'Sea-view suites cost the most; expect music at night'],
+      ['Terceira Praia', 'R$200–450', 'R$750–1,000', 'Family and boutique pousadas on the sand'],
+      ['Quarta Praia', 'R$400–700', 'R$1,000–1,800', 'Eco-pousadas and suites with private terraces and hot tubs'],
+    ],
+    note: 'The island average is around R$400–460 a night for a double room. Christmas, New Year and Carnival can double prices; book months ahead.',
+  },
+  'boipeba': {
+    rows: [
+      ['Velha Boipeba', 'R$250–500', 'R$600–900', 'Village pousadas near the river beach'],
+      ['Moreré', 'R$320–600', 'R$900–1,500', 'Bungalows and lodges close to the natural pools'],
+    ],
+    note: 'Average around R$430 a night. Choice is limited, so book early for summer.',
+  },
+  'marau-peninsula': {
+    rows: [
+      ['Barra Grande village', 'R$300–600', 'R$1,200–1,700', 'Walk to restaurants and the boat pier'],
+      ['Taipu de Fora & ocean beaches', 'R$400–700', 'R$1,000–1,700', 'Quieter, near the reef pools; you’ll need buggy transfers'],
+    ],
+    note: 'Good pousadas usually include breakfast. Peak weeks run higher.',
+  },
+  'itacare': {
+    rows: [
+      ['Town & Pedro Longo', 'R$250–450', 'R$500–800', 'Walk to bars and the urban beaches'],
+      ['Urban beaches (Concha to Ribeira)', 'R$400–550', 'R$600–1,200', 'Pousadas near the surf beaches'],
+      ['Coast road resorts', 'R$500–900', 'R$2,000–4,000', 'Luxury eco-resorts in the rainforest'],
+    ],
+    note: 'In low season, pousadas rated above 8.5 often go for R$200–420.',
+  },
+  'praia-do-forte': {
+    rows: [
+      ['Village pousadas', 'R$350–600', 'R$700–800', 'Walk to the main street and TAMAR'],
+      ['Beach resorts', 'R$900–1,400', 'R$1,400–2,500', 'Big resorts, often all-inclusive'],
+    ],
+    note: 'The average village pousada runs around R$340 a night. July and the Christmas holidays are busiest.',
+  },
+  'trancoso': {
+    rows: [
+      ['Quadrado', 'R$500–1,000', 'R$1,800–3,000+', 'Boutique pousadas and design hotels around the square'],
+      ['Beaches below the village', 'R$450–900', 'R$1,500–3,000', 'Quieter, near Nativos and Coqueiros'],
+      ['Caraíva', 'R$300–500', 'R$800–1,200', 'Rustic-chic pousadas in the car-free village'],
+    ],
+    note: 'April is the cheapest month (around R$370 on average); December averages around R$1,370, and New Year week costs far more.',
+  },
+  'chapada-diamantina': {
+    rows: [
+      ['Lençóis', 'R$250–400', 'R$450–900', 'Best-equipped base, walk to restaurants'],
+      ['Vale do Capão', 'R$350–550', 'R$600–900', 'Chalets and eco-pousadas near the Fumaça trail'],
+      ['Mucugê', 'R$170–350', 'R$400–600', 'Cooler, charming and quieter'],
+      ['Vale do Pati homestays', 'about R$100 per person', '—', 'Simple family homes with dinner and breakfast'],
+    ],
+    note: 'Prices rise in July, around São João and on long weekends.',
+  },
+};
+
+const STAY_TABLE = (p) => '<div class="phrase-table price-table" role="region" aria-label="Accommodation prices" tabindex="0"><table><thead><tr><th>Area</th><th>Mid-range / night</th><th>High-end / night</th></tr></thead><tbody>' +
+  p.rows.map(([area, mid, high, note]) => `<tr><td><strong>${area}</strong><span class="area-note">${note}</span></td><td>${mid}</td><td>${high}</td></tr>`).join('') +
+  `</tbody></table></div><p>${p.note} Prices are for a double room per night, usually with breakfast, based on public listings on Booking.com, Kayak and TripAdvisor and local travel guides (November 2026). Expect 1.5–3× higher rates over Christmas, New Year and Carnival.</p>`;
+
+Object.entries(STAY_PRICES).forEach(([slug, p]) => {
+  const d = DESTINATIONS.find((x) => x.slug === slug);
+  if (!d) return;
+  d.sections.splice(d.sections.length - 1, 0, { h: 'What accommodation costs', html: STAY_TABLE(p) });
+});
