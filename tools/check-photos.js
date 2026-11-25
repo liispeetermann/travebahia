@@ -9,7 +9,7 @@ function checkPhotos() {
   Object.entries(A.pages).forEach(([p, k]) => add(k, p + ' hero'));
   const group = (obj, label) => Object.entries(obj).forEach(([slug, v]) => { add(v.photo, `${label} ${slug} hero`); (v.gallery || []).forEach((k) => add(k, `${label} ${slug} gallery`)); (v.hotelPhotos || []).forEach((k) => add(k, `${label} ${slug} hotel`)); });
   group(A.destinations, 'destination'); group(A.articles, 'article'); group(A.stays, 'stay');
-  add(A.about.hero, 'about hero'); add(A.about.couple, 'about couple'); add(A.about.portrait, 'author portrait'); A.about.gallery.forEach((k) => add(k, 'about gallery'));
+  add(A.about.hero, 'about hero'); add(A.about.couple, 'about couple'); A.about.gallery.forEach((k) => add(k, 'about gallery'));
   Object.entries(SECTION_PHOTOS).forEach(([slug, secs]) => Object.entries(secs).forEach(([h, keys]) => add(keys[0], `${slug} › ${h}`)));
   const out = [];
   Object.entries(uses).forEach(([k, w]) => { if (!PHOTOS[k]) out.push(`UNKNOWN photo "${k}" (${w.join('; ')})`); else if (w.length > 1) out.push(`REPEATED ${k}: ${w.join(' | ')}`); });

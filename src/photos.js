@@ -416,7 +416,7 @@ const PHOTO_ASSIGN = {
     'where-to-stay-morro-de-sao-paulo': { photo: 'M1', hotelPhotos: [], gallery: ['LG_juice', 'LG_leaves', 'LG_fruittree'] },
     'best-boutique-hotels-salvador': { photo: 'SB1', hotelPhotos: [], gallery: ['LG_glebcafe', 'LG_nightbeach', 'LG_yellowwall', 'LG_shopstreet', 'SB4', 'SB7', 'SB9'] },
   },
-  about: { hero: 'BB9', couple: 'LG_selfie2', portrait: 'LG_selfie', gallery: ['LG_cacao2', 'LG_cacao1', 'LG_nightselfie', 'LG_liistree', 'LG_bougainvillea', 'LG_handtree', 'LG_forest'] },
+  about: { hero: 'BB9', couple: 'LG_selfie', portrait: 'LG_selfie', gallery: ['LG_cacao2', 'LG_cacao1', 'LG_nightselfie', 'LG_liistree', 'LG_bougainvillea', 'LG_handtree', 'LG_forest'] },
 };
 
 /* ---------- photos placed right after a specific section (by its heading) ---------- */
