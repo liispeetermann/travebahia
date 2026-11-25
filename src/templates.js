@@ -148,7 +148,7 @@ ${footer()}
   function destCard(d, i = 0) {
     return `<article class="dest-card reveal" data-tilt style="--i:${i}">
   <a href="/destinations/${d.slug}">
-    ${img(d.photo, { sizes: '(min-width: 900px) 30vw, 85vw' })}
+    ${img(d.card, { sizes: '(min-width: 900px) 30vw, 85vw' })}
     <div class="dest-card-body"><p class="eyebrow">${d.region}</p><h3>${d.name}</h3><p>${d.tagline}</p><span class="arrow" aria-hidden="true">→</span></div>
   </a>
 </article>`;
@@ -190,7 +190,7 @@ ${footer()}
     const salvador = DESTINATIONS.find((d) => d.slug === 'salvador');
     const morro = hero;
     const latest = ARTICLES.slice().sort((a, b) => b.date.localeCompare(a.date));
-    const mapPoints = DESTINATIONS.map((d) => ({ name: d.name, url: `/destinations/${d.slug}`, x: d.map.x, y: d.map.y, labelLeft: d.map.labelLeft, blurb: esc(d.tagline), img: PH.url(d.photo, 600, 400) }));
+    const mapPoints = DESTINATIONS.map((d) => ({ name: d.name, url: `/destinations/${d.slug}`, x: d.map.x, y: d.map.y, labelLeft: d.map.labelLeft, blurb: esc(d.tagline), img: PH.url(d.card, 600, 400) }));
     const homeFaq = [
       { q: 'Where is Bahia, Brazil?', a: 'Bahia is a state on Brazil’s northeastern Atlantic coast. Its capital, Salvador, is the main gateway; most U.S. travelers connect through São Paulo, Rio de Janeiro, Miami or Panama City. Bahia has the longest coastline of any Brazilian state.' },
       { q: 'What are the best places to visit in Bahia?', a: 'The most popular places in Bahia are Salvador, Morro de São Paulo, Chapada Diamantina, Itacaré, Praia do Forte, Trancoso, Boipeba and the Maraú Peninsula.' },
@@ -227,7 +227,7 @@ ${footer()}
 
 <section class="spotlights" aria-label="Featured destinations">
   ${[salvador, morro].map((d, i) => `<article class="spot ${i % 2 ? 'spot-rev' : ''}">
-    <div class="spot-media reveal-clip" data-parallax-root><div data-parallax="0.12">${img(d.photo, { sizes: '(min-width: 900px) 60vw, 100vw' })}</div></div>
+    <div class="spot-media reveal-clip" data-parallax-root><div data-parallax="0.12">${img(d.card, { sizes: '(min-width: 900px) 60vw, 100vw' })}</div></div>
     <div class="spot-text reveal">
       <p class="eyebrow">${d.region}</p>
       <h2>${d.name}</h2>
@@ -264,7 +264,7 @@ ${footer()}
   <div class="wrap map-grid">
     <div class="reveal"><p class="eyebrow">Interactive map</p><h2 id="map-h" class="display">From the Bay of All Saints to the whale coast.</h2>
     <p>Hover or tap a pin to preview each destination. Salvador is your gateway: islands are a boat ride south, the Chapada is six hours inland, and the Discovery Coast is a short flight away.</p>
-    <div class="map-preview" data-map-preview><img src="${PH.url(salvador.photo, 600, 400)}" alt="" width="600" height="400" loading="lazy"><div><h3>Salvador</h3><p>${esc(salvador.tagline)}</p><a class="btn btn-sun map-cta" href="/destinations/salvador/" data-map-cta>Read the Salvador guide <span aria-hidden="true">→</span></a></div></div></div>
+    <div class="map-preview" data-map-preview><img src="${PH.url(salvador.card, 600, 400)}" alt="" width="600" height="400" loading="lazy"><div><h3>Salvador</h3><p>${esc(salvador.tagline)}</p><a class="btn btn-sun map-cta" href="/destinations/salvador/" data-map-cta>Read the Salvador guide <span aria-hidden="true">→</span></a></div></div></div>
     <div class="map-wrap reveal">${ART.bahiaMap(mapPoints)}</div>
   </div>
 </section>
@@ -287,7 +287,7 @@ ${footer()}
 </section>
 
 <section class="stays-teaser" data-parallax-root>
-  <div class="stays-bg" data-parallax="0.2">${img(PHOTO_ASSIGN.pages.stays, { alt: "" })}</div>
+  <div class="stays-bg" data-parallax="0.2">${img(STAYS[0].photo, { alt: "" })}</div>
   <div class="stays-shade"></div>
   <div class="wrap stays-inner reveal"><p class="eyebrow">Where to stay</p><h2 class="display">Where to base yourself.</h2>
   <p>Which beach, which neighborhood, and why — from boutique pousadas to beachfront luxury, compared area by area.</p>
@@ -370,7 +370,7 @@ ${pageHero({ item: a, eyebrow: '', title: a.title, lede: '', crumbs, meta })}
   <article class="prose">
     ${tldrBox(a.tldr, a.takeaways)}
     ${a.body.map((s) => `<section class="reveal"><h2 id="${slugify(s.h)}">${s.h}</h2>${s.html}</section>` + sectionMedia(a, s.h)).join('')}
-    ${dests.length ? `<aside class="dest-mini reveal"><p class="eyebrow">Destinations in this article</p><div>${dests.map((d) => `<a href="/destinations/${d.slug}">${img(d.photo, { sizes: '200px' })}<span>${d.name}</span></a>`).join('')}</div></aside>` : ''}
+    ${dests.length ? `<aside class="dest-mini reveal"><p class="eyebrow">Destinations in this article</p><div>${dests.map((d) => `<a href="/destinations/${d.slug}">${img(d.card, { sizes: '200px' })}<span>${d.name}</span></a>`).join('')}</div></aside>` : ''}
     ${gallery(a.gallery, "In pictures", "gallery-three")}
     ${faqBlock(a.faqs)}
     ${authorBox(a.updated)}
