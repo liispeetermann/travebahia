@@ -140,6 +140,62 @@
     addEventListener('pointerup', () => { down = false; rail.classList.remove('dragging'); });
     rail.addEventListener('click', (e) => { if (moved) { e.preventDefault(); moved = false; } }, true);
     rail.addEventListener('dragstart', (e) => e.preventDefault());
+    /* mostly-vertical wheel/trackpad gestures scroll the page straight away instead of getting caught by the carousel */
+    rail.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) { e.preventDefault(); scrollBy({ top: e.deltaY * (e.deltaMode === 1 ? 32 : 1), left: 0 }); }
+    }, { passive: false });
+  }
+
+  /* lightbox: every content photo opens full-screen, with previous/next arrows, keys and swipe */
+  const lbImgs = $$('main figure img, .page-hero-media img, .hero-media img, .story-bg img, .stays-bg img').filter((im) => !im.closest('a'));
+  if (lbImgs.length) {
+    const big = (im) => {
+      const set = (im.getAttribute('srcset') || '').split(',').map((s) => s.trim().split(/\s+/)).filter((p) => p[0]);
+      if (!set.length) return im.currentSrc || im.src;
+      set.sort((a, b) => parseInt(b[1]) - parseInt(a[1]));
+      return new URL(set[0][0], location.href).href;
+    };
+    const caption = (im) => { const fig = im.closest('figure'); const fc = fig && fig.querySelector('figcaption'); return fc ? fc.innerHTML : (im.alt || ''); };
+    const lb = document.createElement('div');
+    lb.className = 'lb'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true'); lb.setAttribute('aria-label', 'Photo viewer');
+    lb.innerHTML = '<div class="lb-stage"><span class="lb-count"></span><img alt=""><button class="lb-btn lb-prev" aria-label="Previous photo">&#8592;</button><button class="lb-btn lb-next" aria-label="Next photo">&#8594;</button><button class="lb-btn lb-close" aria-label="Close">&#10005;</button></div><p class="lb-cap"></p>';
+    document.body.appendChild(lb);
+    const view = $('.lb-stage img', lb), cap = $('.lb-cap', lb), count = $('.lb-count', lb);
+    let cur = 0, lastFocus = null;
+    const show = (i) => {
+      cur = (i + lbImgs.length) % lbImgs.length;
+      const im = lbImgs[cur];
+      view.classList.add('is-loading');
+      const src = big(im);
+      const pre = new Image(); pre.onload = pre.onerror = () => { view.src = src; view.alt = im.alt; view.classList.remove('is-loading'); }; pre.src = src;
+      cap.innerHTML = caption(im);
+      count.textContent = `${cur + 1} / ${lbImgs.length}`;
+      [lbImgs[cur + 1], lbImgs[cur - 1]].forEach((n) => { if (n) { const p = new Image(); p.src = big(n); } });
+    };
+    const open = (i) => { lastFocus = document.activeElement; show(i); lb.classList.add('is-open'); document.body.classList.add('lb-open'); $('.lb-close', lb).focus(); };
+    const close = () => { lb.classList.remove('is-open'); document.body.classList.remove('lb-open'); lastFocus && lastFocus.focus && lastFocus.focus(); };
+    lbImgs.forEach((im, i) => {
+      const target = im.closest('figure') || im.closest('.page-hero-media, .hero-media, .story-bg, .stays-bg') || im;
+      target.setAttribute('data-lb', ''); im.setAttribute('tabindex', '0'); im.setAttribute('role', 'button');
+      const go = (e) => { if (e.target.closest('a')) return; e.preventDefault(); open(i); };
+      (target.matches('.page-hero-media, .hero-media, .story-bg, .stays-bg') ? im : target).addEventListener('click', go);
+      im.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') go(e); });
+    });
+    $('.lb-prev', lb).addEventListener('click', () => show(cur - 1));
+    $('.lb-next', lb).addEventListener('click', () => show(cur + 1));
+    $('.lb-close', lb).addEventListener('click', close);
+    lb.addEventListener('click', (e) => { if (e.target === lb || e.target.classList.contains('lb-stage')) close(); });
+    addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('is-open')) return;
+      if (e.key === 'Escape') close(); else if (e.key === 'ArrowRight') show(cur + 1); else if (e.key === 'ArrowLeft') show(cur - 1);
+    });
+    let tx = null, ty = null;
+    lb.addEventListener('touchstart', (e) => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
+    lb.addEventListener('touchend', (e) => {
+      if (tx === null) return;
+      const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; tx = null;
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) show(cur + (dx < 0 ? 1 : -1)); else if (dy > 90) close();
+    });
   }
 
   /* interactive map */
@@ -184,10 +240,20 @@
     map.forEach((_, id) => { const el = document.getElementById(id); el && tio.observe(el); });
   }
 
-  /* newsletter (connect a provider in README → "Newsletter") */
-  $$('[data-newsletter]').forEach((form) => form.addEventListener('submit', (e) => {
-    if (form.action && !form.action.endsWith(location.pathname) && form.getAttribute('action')) return;
+  /* newsletter → MailerLite (form "TravelBahia newsletter"); posts in the background, no page reload */
+  $$('[data-newsletter]').forEach((form) => form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    form.parentElement.querySelector('.nl-msg').textContent = 'Thank you! Our newsletter launches soon — sign-ups open shortly.';
+    const msg = form.parentElement.querySelector('.nl-msg');
+    const btn = form.querySelector('button');
+    const email = form.querySelector('input[type=email]');
+    if (!email.value || !email.checkValidity()) { msg.textContent = 'Please enter a valid email address.'; email.focus(); return; }
+    btn.disabled = true; msg.textContent = 'Subscribing…';
+    try {
+      await fetch(form.action, { method: 'POST', mode: 'no-cors', body: new FormData(form) });
+      form.reset();
+      msg.textContent = 'Thank you! You’re on the list — check your inbox to confirm if asked.';
+    } catch (err) {
+      msg.textContent = 'Sorry, something went wrong. Please try again in a moment.';
+    } finally { btn.disabled = false; }
   }));
 })();

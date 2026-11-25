@@ -16,42 +16,44 @@
 <meta name="theme-color" content="#0b2f4a">
 <meta name="geo.region" content="BR-BA"><meta name="geo.placename" content="Bahia, Brazil">
 
-<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/site.css">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3GJC96P347"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3GJC96P347');</script>
-<script defer src="assets/js/site.js"></script>
+<script defer src="/assets/js/site.js"></script>
 </head>
 <body class="">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header" data-header>
-  <a class="logo" href="index.html" aria-label="TravelBahia home"><span class="logo-mark" aria-hidden="true"></span><span>Travel<b>Bahia</b></span></a>
-  <nav aria-label="Main"><ul class="nav-links" id="nav"><li><a href="destinations/index.html">Destinations</a></li><li><a href="blog/index.html">Journal</a></li><li><a href="stays/index.html">Where to Stay</a></li><li><a href="blog/is-bahia-safe-for-american-tourists/index.html">Safety</a></li><li><a href="about/index.html">About</a></li></ul></nav>
+  <a class="logo" href="/" aria-label="TravelBahia home"><span class="logo-mark" aria-hidden="true"></span><span>Travel<b>Bahia</b></span></a>
+  <nav aria-label="Main"><ul class="nav-links" id="nav"><li><a href="/destinations/">Destinations</a></li><li><a href="/blog/">Journal</a></li><li><a href="/stays/">Where to Stay</a></li><li><a href="/blog/is-bahia-safe-for-american-tourists/">Safety</a></li><li><a href="/about">About</a></li></ul></nav>
   <button class="nav-toggle" aria-controls="nav" aria-expanded="false" data-nav-toggle><span></span><span></span><span class="sr">Menu</span></button>
 </header>
 <main id="main">
-<section class="page-hero nf"><div class="page-hero-media"><img class="" src="https://images.unsplash.com/photo-1482807799514-81eafb6ea59b?auto=format&fit=crop&w=1600&q=78" srcset="https://images.unsplash.com/photo-1482807799514-81eafb6ea59b?auto=format&fit=crop&w=640&q=78 640w, https://images.unsplash.com/photo-1482807799514-81eafb6ea59b?auto=format&fit=crop&w=1080&q=78 1080w, https://images.unsplash.com/photo-1482807799514-81eafb6ea59b?auto=format&fit=crop&w=1600&q=78 1600w, https://images.unsplash.com/photo-1482807799514-81eafb6ea59b?auto=format&fit=crop&w=2400&q=78 2400w" sizes="100vw" alt="Boats on the water under a purple and orange tropical sunset" width="1600" height="1067" fetchpriority="high" decoding="async"></div><div class="page-hero-shade"></div><div class="page-hero-content"><p class="eyebrow">404</p><h1>Lost at sea.</h1><p class="lede">That page drifted off. Try the <a href="destinations/index.html">destinations</a> or the <a href="blog/index.html">journal</a>.</p></div></section>
+<script>(function(){var p=location.pathname,q=p;if(q.slice(-11)==='/index.html')q=q.slice(0,-11);else if(q.length>1&&q.slice(-1)==='/')q=q.slice(0,-1);if(q!==p&&['/destinations','/blog','/stays'].indexOf(q)<0)location.replace(q+location.search+location.hash);})()</script><section class="page-hero nf"><div class="page-hero-media"><img class="" src="https://images.unsplash.com/photo-1772133956303-7ab5faf6c300?auto=format&fit=crop&w=1600&q=78" srcset="https://images.unsplash.com/photo-1772133956303-7ab5faf6c300?auto=format&fit=crop&w=640&q=78 640w, https://images.unsplash.com/photo-1772133956303-7ab5faf6c300?auto=format&fit=crop&w=1080&q=78 1080w, https://images.unsplash.com/photo-1772133956303-7ab5faf6c300?auto=format&fit=crop&w=1600&q=78 1600w, https://images.unsplash.com/photo-1772133956303-7ab5faf6c300?auto=format&fit=crop&w=2400&q=78 2400w" sizes="100vw" alt="A palm-covered islet in calm water" width="1600" height="1067" fetchpriority="high" decoding="async"></div><div class="page-hero-shade"></div><div class="page-hero-content"><p class="eyebrow">404</p><h1>Lost at sea.</h1><p class="lede">That page drifted off. Try the <a href="/destinations/">destinations</a> or the <a href="/blog/">journal</a>.</p></div></section>
 </main>
 <section class="newsletter reveal" aria-labelledby="nl-title">
   <div class="newsletter-inner">
     <p class="eyebrow">The Bahia Letter</p>
     <h2 id="nl-title">New places, honest tips, once a month.</h2>
-    <form class="nl-form" data-newsletter>
+    <form class="nl-form" data-newsletter action="https://assets.mailerlite.com/jsonp/1984183/forms/205093065057109445/subscribe" method="post">
       <label class="sr" for="nl-email">Email address</label>
-      <input id="nl-email" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
+      <input type="hidden" name="ml-submit" value="1"><input type="hidden" name="anticsrf" value="true">
+      <input id="nl-email" type="email" name="fields[email]" placeholder="you@example.com" required autocomplete="email">
       <button class="btn btn-sun" type="submit">Subscribe</button>
     </form>
     <p class="nl-msg" role="status" aria-live="polite"></p>
+    <p class="nl-consent">One email a month. Unsubscribe anytime. See our <a href="/privacy">privacy policy</a>.</p>
   </div>
 </section>
 <footer class="site-footer">
   <div class="foot-grid">
-    <div><a class="logo" href="index.html"><span class="logo-mark" aria-hidden="true"></span><span>Travel<b>Bahia</b></span></a><p>The American traveler’s guide to Bahia, Brazil. Independent, written for U.S. travelers.</p></div>
-    <div><h3>Destinations</h3><ul><li><a href="destinations/salvador/index.html">Salvador</a></li><li><a href="destinations/morro-de-sao-paulo/index.html">Morro de São Paulo</a></li><li><a href="destinations/chapada-diamantina/index.html">Chapada Diamantina</a></li><li><a href="destinations/itacare/index.html">Itacaré</a></li><li><a href="destinations/praia-do-forte/index.html">Praia do Forte</a></li><li><a href="destinations/trancoso/index.html">Trancoso</a></li></ul></div>
-    <div><h3>Journal</h3><ul><li><a href="blog/portuguese-phrases-for-brazil/index.html">Essential Portuguese for Brazil</a></li><li><a href="blog/beach-day-in-bahia-like-a-local/index.html">A Beach Day in Bahia Like a Local</a></li><li><a href="blog/brazil-by-bus-leito/index.html">Traveling Brazil by Bus</a></li><li><a href="blog/markets-bargaining-prices-brazil/index.html">Markets, Bargaining & Prices in Brazil</a></li><li><a href="blog/is-bahia-safe-for-american-tourists/index.html">Is Bahia Safe for American Tourists? An Honest 2026 Guide</a></li></ul></div>
-    <div><h3>About</h3><ul><li><a href="about/index.html">About us</a></li><li><a href="collaborations/index.html">Collaborations</a></li><li><a href="stays/index.html">Where to stay</a></li><li><a href="about/index.html#affiliate-disclosure">Affiliate disclosure</a></li><li><a href="privacy/index.html">Privacy</a></li></ul></div>
+    <div><a class="logo" href="/"><span class="logo-mark" aria-hidden="true"></span><span>Travel<b>Bahia</b></span></a><p>The American traveler’s guide to Bahia, Brazil. Independent, written for U.S. travelers.</p></div>
+    <div><h3>Destinations</h3><ul><li><a href="/destinations/salvador">Salvador</a></li><li><a href="/destinations/morro-de-sao-paulo">Morro de São Paulo</a></li><li><a href="/destinations/chapada-diamantina">Chapada Diamantina</a></li><li><a href="/destinations/itacare">Itacaré</a></li><li><a href="/destinations/praia-do-forte">Praia do Forte</a></li><li><a href="/destinations/trancoso">Trancoso</a></li></ul></div>
+    <div><h3>Journal</h3><ul><li><a href="/blog/portuguese-phrases-for-brazil">Essential Portuguese for Brazil</a></li><li><a href="/blog/beach-day-in-bahia-like-a-local">A Beach Day in Bahia Like a Local</a></li><li><a href="/blog/brazil-by-bus-leito">Traveling Brazil by Bus</a></li><li><a href="/blog/markets-bargaining-prices-brazil">Markets, Bargaining & Prices in Brazil</a></li><li><a href="/blog/is-bahia-safe-for-american-tourists">Is Bahia Safe for American Tourists? An Honest 2026 Guide</a></li></ul></div>
+    <div><h3>About</h3><ul><li><a href="/about">About us</a></li><li><a href="/collaborations">Collaborations</a></li><li><a href="/stays/">Where to stay</a></li><li><a href="/collaborations#affiliate-disclosure">Affiliate disclosure</a></li><li><a href="/privacy">Privacy</a></li></ul></div>
   </div>
   <p class="fine">© 2026 TravelBahia. Photography via Unsplash and our own travels; photographers credited on each image. Information is checked at time of writing; always confirm visa, health and safety rules with official sources.</p>
 </footer>

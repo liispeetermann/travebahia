@@ -1,0 +1,1 @@
+function run() { return checkPhotos(); }

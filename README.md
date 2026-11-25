@@ -8,7 +8,7 @@ A fast, image-led static travel site about Bahia, Brazil, written for U.S. trave
 ./build.sh    # regenerates the website in this folder after you edit anything in src/
 ```
 
-The built website lives at the **top level of this folder** (`index.html`, `blog/`, `destinations/`, `photos/`, `CNAME`…), right next to the source folders — ready for GitHub Pages ("Deploy from a branch", folder `/ (root)`). To view it locally, double-click `index.html`; pages link to each other with relative paths.
+The built website lives at the **top level of this folder** (`index.html`, `blog/`, `destinations/`, `photos/`, `CNAME`…), right next to the source folders — ready for GitHub Pages ("Deploy from a branch", folder `/ (root)`). Pages use clean URLs (`/destinations/salvador`, no `index.html`), which GitHub Pages serves from `destinations/salvador.html`. To preview locally, run `perl tools/serve.pl 8081` and open http://localhost:8081 (double-clicking the files no longer works with clean links). When you copy the build to your GitHub folder, replace the whole `destinations/`, `blog/` and `stays/` folders and delete the old `about/`, `collaborations/` and `privacy/` folders, so no outdated copies are left behind.
 
 - Source folders (never touched by the build): `src/`, `public/`, `tools/`, `originals/`, `build.sh`, `build-node.js`, `README.md`.
 - Everything else at the top level is generated. The build only replaces files listed in the hidden `.generated` file, so your source and git files are safe.
@@ -56,7 +56,7 @@ Still for you to do:
 - [ ] Replace "The TravelBahia Team" in `config.js` with your real name and bio, and write your story on the About page (first-hand experience is the strongest ranking signal for travel).
 - [ ] Add your own travel photos, which helps E-E-A-T.
 - [ ] Verify the domain in Google Search Console and Bing Webmaster Tools (add the codes in `config.js`), then submit `/sitemap.xml`.
-- [ ] Connect a newsletter provider (Buttondown, ConvertKit, Beehiiv): set the `<form action>` in `templates.js` → `footer()`.
+- [x] Newsletter: connected to MailerLite (form action in `templates.js` → `footer()`).
 - [ ] Analytics: paste a Google Analytics 4 ID (`G-…`) into `analytics.ga4` in `src/config.js` (or a domain into `plausibleDomain` for Plausible), then run `./build.sh`. The privacy page updates itself to match.
 - [ ] Create a `hello@travelbahia.com` mailbox.
 - [ ] Re-check visa, health and safety facts before launch and whenever rules change.

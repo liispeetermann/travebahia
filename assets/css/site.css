@@ -493,3 +493,51 @@ main:has(> .nf:last-child) { padding-bottom: 0; }
 section#content.card-grid, section#content.dest-grid { padding-top: clamp(3rem, 6vw, 5rem); }
 .prose .areas { grid-template-columns: repeat(2, 1fr); margin-bottom: 1rem; }
 @media (max-width: 640px) { .prose .areas { grid-template-columns: 1fr; } }
+
+/* ---------- November 2026 fixes ---------- */
+/* tags/chips sit flush left with the text */
+.prose .chips, .prose ul.chips { padding-left: 0; margin-left: 0; }
+/* tighter rhythm between hero and "Why Bahia" (marquee removed) */
+.intro-stats { padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(2.5rem, 6vw, 4.5rem); }
+/* map section: less vertical padding */
+.map-section { padding: clamp(2.5rem, 5vw, 4rem) 0; }
+/* destination carousel: let vertical scrolling pass straight to the page */
+.rail { scroll-snap-type: x proximity; overscroll-behavior-x: contain; touch-action: pan-x pan-y; }
+
+/* galleries never leave holes */
+.uw-3, .uw-6 { grid-column: auto; grid-row: auto; }
+.uw-0, .uw-7 { grid-column: span 2; grid-row: span 2; }
+.uw-grid { grid-auto-flow: dense; }
+@media (max-width: 760px) { .uw-0, .uw-7 { grid-column: span 2; grid-row: span 1; } .uw-3, .uw-6 { grid-column: auto; } }
+.lens-2, .lens-5, .lens-8 { grid-column: auto; grid-row: auto; }
+.lens-0, .lens-7 { grid-column: span 2; grid-row: span 2; }
+@media (max-width: 760px) { .lens-0, .lens-7 { grid-column: span 2; grid-row: span 1; } .lens-5 { grid-column: auto; } }
+.gallery:not(.gallery-three):not(.gallery-even) .g:last-child:nth-child(even) { grid-column: span 2; aspect-ratio: 16/9; }
+.gallery-even .g:last-child:nth-child(odd) { grid-column: span 2; aspect-ratio: 2/1; }
+.gallery-three .g:last-child:nth-child(3n+1) { grid-column: span 3; aspect-ratio: 3/1; }
+.gallery-three .g:last-child:nth-child(3n+2) { grid-column: span 2; aspect-ratio: auto; }
+@media (max-width: 700px) {
+  .gallery-three .g:last-child:nth-child(3n+1), .gallery-three .g:last-child:nth-child(3n+2) { grid-column: auto; aspect-ratio: 1/1; }
+  .gallery-three .g:last-child:nth-child(odd) { grid-column: span 2; aspect-ratio: 2/1; }
+}
+
+/* ---------- lightbox ---------- */
+[data-lb] { cursor: zoom-in; }
+.lb { position: fixed; inset: 0; z-index: 1000; display: grid; grid-template-rows: 1fr auto; background: rgba(4, 14, 24, .94); opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; }
+.lb.is-open { opacity: 1; visibility: visible; }
+.lb-stage { position: relative; display: grid; place-items: center; min-height: 0; padding: 4.5rem 4.5rem 1rem; touch-action: pan-y; }
+.lb-stage img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 6px; box-shadow: 0 20px 60px rgba(0, 0, 0, .5); transition: opacity .25s; }
+.lb-stage img.is-loading { opacity: .35; }
+.lb-cap { color: #fff; text-align: center; font-size: .9rem; padding: .6rem 1.5rem 1.4rem; opacity: .85; }
+.lb-cap a { color: inherit; }
+.lb-count { position: absolute; top: 1.4rem; left: 1.6rem; color: #fff; font-size: .85rem; opacity: .7; letter-spacing: .06em; }
+.lb-btn { position: absolute; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .25); background: rgba(255, 255, 255, .1); color: #fff; font-size: 1.5rem; line-height: 1; cursor: pointer; backdrop-filter: blur(8px); transition: background .2s, transform .2s; }
+.lb-btn:hover, .lb-btn:focus-visible { background: rgba(255, 255, 255, .25); transform: scale(1.06); }
+.lb-prev { left: 1.2rem; top: 50%; translate: 0 -50%; }
+.lb-next { right: 1.2rem; top: 50%; translate: 0 -50%; }
+.lb-close { right: 1.2rem; top: 1rem; width: 46px; height: 46px; font-size: 1.3rem; }
+@media (max-width: 700px) { .lb-stage { padding: 4rem .6rem .6rem; } .lb-prev, .lb-next { top: auto; bottom: -3.6rem; translate: none; width: 46px; height: 46px; } .lb-prev { left: 1rem; } .lb-next { right: 1rem; } .lb-cap { padding: .6rem 4.5rem 1.2rem; } }
+body.lb-open { overflow: hidden; }
+.page-hero-shade, .hero-shade, .story-shade, .stays-shade { pointer-events: none; }
+.nl-consent { font-size: .78rem; opacity: .75; margin: .8rem 0 0; }
+.nl-consent a { color: inherit; }

@@ -9,7 +9,7 @@ const CONFIG = {
   // Replace with the real author once you share your story — E-E-A-T matters for Google and AI answers.
   author: {
     name: 'Liis & Gleb',
-    url: '/about/',
+    url: '/about',
     bio: 'We’re Liis and Gleb — travelers drawn to warm seas, wild jungle and places with soul. Bahia keeps pulling us back with its glass-clear water, rainforest rolling down to the sand, and a rhythm you feel in every street.',
   },
   social: { instagram: '', pinterest: '', youtube: '', tiktok: '' },
@@ -29,6 +29,6 @@ const CONFIG = {
     ['Journal', '/blog/'],
     ['Where to Stay', '/stays/'],
     ['Safety', '/blog/is-bahia-safe-for-american-tourists/'],
-    ['About', '/about/'],
+    ['About', '/about'],
   ],
 };

@@ -30,4 +30,6 @@ fi
 ( cd "$OUT" && ls -A ) > .generated
 cp -R "$OUT"/. "$ROOT"/
 rm -rf "$OUT"
-echo "Done → $ROOT (open index.html)"
+# photo check: warns if a photo is used twice or a name/heading is wrong
+CHK="$(mktemp -t travelbahia-check).js"; cat $SRC tools/check-photos.js tools/check-runner.js > "$CHK"; osascript -l JavaScript "$CHK" | sed "s/^/  photos: /"; rm -f "$CHK"
+echo "Done → $ROOT (preview: perl tools/serve.pl 8081, then open http://localhost:8081)"

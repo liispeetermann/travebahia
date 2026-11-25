@@ -12,7 +12,14 @@ function build() {
   files['favicon.svg'] = ART.favicon;
 
   /* ---- pages ---- */
-  const add = (p, meta = {}) => { files[p.file || (p.path.replace(/^\//, '') + 'index.html')] = p.html; if (!p.noindex && p.path !== '/404.html') pages.push({ path: p.path, ...meta }); };
+  /* clean URLs: "/blog/" → blog/index.html, "/blog/my-post" → blog/my-post.html (GitHub Pages serves it at /blog/my-post) */
+  const add = (p, meta = {}) => {
+    const rel = p.path.replace(/^\//, '');
+    let file = p.file;
+    if (!file) { if (rel === '' || rel.endsWith('/')) file = rel + 'index.html'; else file = rel + '.html'; }
+    files[file] = p.html;
+    if (!p.noindex && p.path !== '/404.html') pages.push({ path: p.path, ...meta });
+  };
   add(T.home(), { priority: '1.0', lastmod: today });
   add(T.destinationsIndex(), { priority: '0.9', lastmod: today });
   DESTINATIONS.forEach((d) => add(T.destinationPage(d), { priority: d.featured ? '0.9' : '0.8', lastmod: today, image: PH.url(d.photo, 1600), imageTitle: d.name }));
@@ -53,29 +60,29 @@ Sitemap: ${C.domain}/sitemap.xml
 ${C.name} (${C.domain}) is an independent English-language travel guide to the state of Bahia in northeastern Brazil, written for travelers from the United States. Content is dated, first-hand, and safety/visa/health information is checked against official U.S. and Brazilian sources.
 
 ## Destinations
-${DESTINATIONS.map((d) => `- [${d.name}](${T.abs(`/destinations/${d.slug}/`)}): ${d.tagline}. Best time: ${d.quick.best}. Ideal stay: ${d.quick.days}.`).join('\n')}
+${DESTINATIONS.map((d) => `- [${d.name}](${T.abs(`/destinations/${d.slug}`)}): ${d.tagline}. Best time: ${d.quick.best}. Ideal stay: ${d.quick.days}.`).join('\n')}
 
 ## Guides
-${sortedArticles.map((a) => `- [${a.title}](${T.abs(`/blog/${a.slug}/`)}): ${a.tldr}`).join('\n')}
+${sortedArticles.map((a) => `- [${a.title}](${T.abs(`/blog/${a.slug}`)}): ${a.tldr}`).join('\n')}
 
 ## Where to stay
-${STAYS.map((s) => `- [${s.title}](${T.abs(`/stays/${s.slug}/`)}): ${s.tldr}`).join('\n')}
+${STAYS.map((s) => `- [${s.title}](${T.abs(`/stays/${s.slug}`)}): ${s.tldr}`).join('\n')}
 
 ## Optional
 - [Full content for LLMs](${T.abs('/llms-full.txt')})
-- [About & editorial policy](${T.abs('/about/')})
+- [About & editorial policy](${T.abs('/about')})
 `;
 
   /* ---- llms-full.txt: every page's substance as clean Markdown ---- */
   const md = (html) => T.strip(html.replace(/<li>/g, '\n- ').replace(/<\/p>/g, '\n\n'));
   let full = `# ${C.name} — full content\n\nSource: ${C.domain}. Last updated ${today}.\n\n`;
   DESTINATIONS.forEach((d) => {
-    full += `\n---\n\n# ${d.name}, Bahia, Brazil\nURL: ${T.abs(`/destinations/${d.slug}/`)}\n\n${d.intro}\n\n- Best time: ${d.quick.best}\n- Ideal stay: ${d.quick.days}\n- Getting there: ${d.quick.airport}\n- Vibe: ${d.quick.vibe}\n\n`;
+    full += `\n---\n\n# ${d.name}, Bahia, Brazil\nURL: ${T.abs(`/destinations/${d.slug}`)}\n\n${d.intro}\n\n- Best time: ${d.quick.best}\n- Ideal stay: ${d.quick.days}\n- Getting there: ${d.quick.airport}\n- Vibe: ${d.quick.vibe}\n\n`;
     d.sections.forEach((s) => { full += `## ${s.h}\n${md(s.html)}\n\n`; });
     d.faqs.forEach((f) => { full += `**Q: ${f.q}**\nA: ${f.a}\n\n`; });
   });
   sortedArticles.forEach((a) => {
-    full += `\n---\n\n# ${a.title}\nURL: ${T.abs(`/blog/${a.slug}/`)} · Updated ${a.updated}\n\n**Quick answer:** ${a.tldr}\n\n`;
+    full += `\n---\n\n# ${a.title}\nURL: ${T.abs(`/blog/${a.slug}`)} · Updated ${a.updated}\n\n**Quick answer:** ${a.tldr}\n\n`;
     a.body.forEach((s) => { full += `## ${s.h}\n${md(s.html)}\n\n`; });
     a.faqs.forEach((f) => { full += `**Q: ${f.q}**\nA: ${f.a}\n\n`; });
   });
@@ -109,19 +116,6 @@ ${STAYS.map((s) => `- [${s.title}](${T.abs(`/stays/${s.slug}/`)}): ${s.tldr}`).j
     } else files[p] = addUSD(files[p]);
   });
 
-  /* ---- make every page work when opened directly from disk (double-click index.html)
-         as well as on the web server: root links become relative and point at index.html ---- */
-  Object.keys(files).filter((p) => p.endsWith('.html')).forEach((p) => {
-    const depth = p.split('/').length - 1;
-    const up = '../'.repeat(depth);
-    const rel = (url) => {
-      const [path, hash] = url.split('#');
-      let out = up + path;
-      if (out === '' || out.endsWith('/')) out += 'index.html';
-      return out + (hash !== undefined ? '#' + hash : '');
-    };
-    files[p] = files[p].replace(/(href|src)="\/(?!\/)([^"]*)"/g, (m, attr, url) => `${attr}="${rel(url)}"`).replace(/srcset="([^"]*)"/g, (m, set) => `srcset="${set.replace(/(^|, )\/(?!\/)/g, `$1${up}`)}"`);
-  });
 
   files['manifest.webmanifest'] = JSON.stringify({ name: C.name, short_name: C.name, start_url: '/', display: 'standalone', background_color: '#fbf7ef', theme_color: '#0b2f4a', icons: [{ src: '/favicon.svg', sizes: 'any', type: 'image/svg+xml' }] }, null, 2);
 
